@@ -1,0 +1,15 @@
+<div>
+    <h3>{{ recipeData().name }}</h3>
+    <h4>Ingredients</h4>
+    <ul>
+        @for (ingredient of recipeData().ingredients; track $index) {
+            <li>{{ ingredient }}</li>
+        }
+    </ul>
+    <h4>Description</h4>
+    <ul>
+        @for (step of recipeData().steps; track $index) {
+            <li>{{ step }}</li>
+        }
+    </ul>
+</div>

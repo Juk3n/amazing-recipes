@@ -1,0 +1,5 @@
+<ul>
+    @for (recipe of recipes; track $index) {
+        <li><app-recipe (select)="onRecipeSelect($event)" [recipeData]="recipe"/></li>
+    }
+</ul>
