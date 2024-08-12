@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './recipes.component.css'
 })
 export class RecipesComponent {
+  recipes = [
+    "Spaghetti",
+    "Pizza Dough",
+    "Pancakes",
+  ];
 
 }
