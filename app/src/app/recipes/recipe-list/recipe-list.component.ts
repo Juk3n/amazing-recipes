@@ -11,68 +11,16 @@ import { Recipe } from '../recipe/recipe.model';
 })
 export class RecipeListComponent {
   selectedRecipe = output<Recipe>();
-  recipes: Recipe[] = [
+  recipes: Recipe[] = [];
+
+  async ngOnInit() {
+    const response = await fetch("http://localhost:5062/recipes");
+    await response.json().then((data) =>
     {
-      name: "Spaghetti", 
-      ingredients: 
-      [
-        "Ingredient 1",
-        "Ingredient 2",
-        "Ingredient 3",
-        "Ingredient 4"
-      ], 
-      steps: 
-      [
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Himenaeos euismod integer feugiat vestibulum est malesuada orci suscipit hac. \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-        "Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent; ",
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-      ]
-    },
-    {
-      name: "Pizza Dough", 
-      ingredients: 
-      [
-        "Ingredient 1",
-        "Ingredient 2",
-        "Ingredient 3",
-        "Ingredient 4"
-      ], 
-      steps: 
-      [
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Himenaeos euismod integer feugiat vestibulum est malesuada orci suscipit hac. \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-        "Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent; ",
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-      ]
-    },
-    {
-      name: "Pancakes", 
-      ingredients: 
-      [
-        "Ingredient 1",
-        "Ingredient 2",
-        "Ingredient 3",
-        "Ingredient 4"
-      ], 
-      steps: 
-      [
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Himenaeos euismod integer feugiat vestibulum est malesuada orci suscipit hac. \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-        "Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent; ",
-        "Lorem ipsum odor amet, consectetuer adipiscing elit. \
-          Cursus nostra varius etiam lobortis enim egestas rutrum. Blandit dictumst commodo aptent \
-          Malesuada parturient taciti erat natoque sit gravida commodo.",
-      ]
-    },
-  ];
+      this.recipes = data;
+      console.log(data);
+    });
+  }
 
   onRecipeSelect(selectedRecipe: Recipe) {
     this.selectedRecipe.emit(selectedRecipe);

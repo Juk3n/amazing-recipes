@@ -10,7 +10,7 @@ using api.Data.Contexts;
 
 namespace api.Migrations
 {
-    [DbContext(typeof(RecipeContext))]
+    [DbContext(typeof(RecipesContext))]
     partial class RecipeContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -28,20 +28,17 @@ namespace api.Migrations
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Ingredients")
-                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Steps")
-                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.HasKey("Id");
 
-                    b.ToTable("recipes");
+                    b.ToTable("Recipes");
                 });
 #pragma warning restore 612, 618
         }

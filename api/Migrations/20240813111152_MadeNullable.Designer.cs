@@ -12,8 +12,8 @@ using api.Data.Contexts;
 namespace api.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    [Migration("20240813101024_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240813111152_MadeNullable")]
+    partial class MadeNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,20 +31,17 @@ namespace api.Migrations
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Ingredients")
-                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("Steps")
-                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.HasKey("Id");
 
-                    b.ToTable("recipes");
+                    b.ToTable("Recipes");
                 });
 #pragma warning restore 612, 618
         }
