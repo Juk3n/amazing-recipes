@@ -1,5 +1,5 @@
-<h2>Recipes</h2>
 <div>
+    <app-recipe-manage-bar />
     <app-recipe-list (selectedRecipe)="onRecipeSelect($event)"/>
     @if (currentRecipe !== undefined) {
         <app-recipe-details [recipeData]="currentRecipe"/>
