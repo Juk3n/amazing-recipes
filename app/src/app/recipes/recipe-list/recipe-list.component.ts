@@ -1,6 +1,7 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { RecipeComponent } from "../recipe/recipe.component";
 import { Recipe } from '../recipe/recipe.model';
+import { RecipesService } from '../recipes.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,15 +11,14 @@ import { Recipe } from '../recipe/recipe.model';
   styleUrl: './recipe-list.component.css'
 })
 export class RecipeListComponent {
+  recipesService = inject(RecipesService);
   selectedRecipe = output<Recipe>();
   recipes: Recipe[] = [];
 
   async ngOnInit() {
-    const response = await fetch("http://localhost:5062/recipes");
-    await response.json().then((data) =>
+    this.recipesService.getAllRecipes().then((data) =>
     {
       this.recipes = data;
-      console.log(data);
     });
   }
 
