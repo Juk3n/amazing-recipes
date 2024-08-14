@@ -1,8 +1,13 @@
 <div>
-    <app-recipe-manage-bar />
-    <app-recipe-list (selectedRecipe)="onRecipeSelect($event)"/>
-    @if (currentRecipe !== undefined) {
-        <app-recipe-details [recipeData]="currentRecipe"/>
+    <app-recipe-manage-bar (manageMode)="onRecipeManageModeChange($event)"/>
+    @if (manageMode == "View") {
+        <app-recipe-list (selectedRecipe)="onRecipeSelect($event)"/>
+        @if (currentRecipe !== undefined) {
+            <app-recipe-details [recipeData]="currentRecipe"/>
+        }
+    }
+    @else {
+        <app-add-recipe />
     }
 
 </div>

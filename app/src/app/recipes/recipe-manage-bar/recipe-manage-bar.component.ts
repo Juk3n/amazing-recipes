@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
+import { RecipeManageMode } from './recipe-manage-bar.model';
 
 @Component({
   selector: 'app-recipe-manage-bar',
@@ -8,12 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './recipe-manage-bar.component.css'
 })
 export class RecipeManageBarComponent {
+  manageMode = output<RecipeManageMode>();
 
   onShowRecipesClick() {
-    console.log("Show Recipe List");
+    this.manageMode.emit(RecipeManageMode.View);
   }
 
   onAddRecipeClick() {
-    console.log("Open Add Recipe Dialog");
+    this.manageMode.emit(RecipeManageMode.Add);
   }
 }
