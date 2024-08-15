@@ -25,4 +25,11 @@ export class RecipesService {
         });
         console.log(response);
     }
+
+    async deleteRecipe(id: string) {
+        const response = await fetch(this.api + "recipes/" + id, {
+            method: 'DELETE'
+        });
+        console.log(response);
+    }
 }

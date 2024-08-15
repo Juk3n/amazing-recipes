@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Recipe } from '../recipe/recipe.model';
+import { RecipesService } from '../recipes.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -10,12 +11,13 @@ import { Recipe } from '../recipe/recipe.model';
 })
 export class RecipeDetailsComponent {
   recipeData = input.required<Recipe>();
+  recipesService = inject(RecipesService);
 
   onEditRecipe() {
 
   }
 
-  onDeleteRecipe() {
-    
+  async onDeleteRecipe() {
+    await this.recipesService.deleteRecipe(this.recipeData().id);
   }
 }

@@ -18,6 +18,7 @@ export class AddRecipeComponent {
 
   onSubmit() {
     let recipe = {
+      id: "0",
       name: this.enteredName(),
       ingredients: this.enteredIngedients(),
       steps: this.enteredSteps()

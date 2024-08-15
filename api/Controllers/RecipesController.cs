@@ -19,7 +19,7 @@ public class RecipesController : ControllerBase
         return await _context.Recipes.ToListAsync();
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Recipe>> GetRecipe(string id) {
         var recipe = await _context.Recipes.FirstOrDefaultAsync(x => x.Id == id);
         if (recipe == null) {
@@ -44,4 +44,15 @@ public class RecipesController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteRecipe(string id) {
+        var recipeToDelete = await _context.Recipes.FirstOrDefaultAsync(x => x.Id == id);
+        if (recipeToDelete is null)
+            return NotFound();
+        
+        _context.Remove(recipeToDelete);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
