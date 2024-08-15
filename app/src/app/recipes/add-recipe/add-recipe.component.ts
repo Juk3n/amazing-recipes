@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipesService } from '../recipes.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -9,7 +10,26 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-recipe.component.css'
 })
 export class AddRecipeComponent {
+  recipesService = inject(RecipesService);
+
+  enteredName = signal<string>('');
+  enteredIngedients = signal<string[]>(['']);
+  enteredSteps = signal<string[]>(['']);
+
   onSubmit() {
-    console.log("Add recipe");
+    let recipe = {
+      name: this.enteredName(),
+      ingredients: this.enteredIngedients(),
+      steps: this.enteredSteps()
+    }
+    this.recipesService.addRecipe(recipe);
+  }
+
+  onAddIngredient() {
+    this.enteredIngedients().push('');
+  }
+
+  onAddStep() {
+    this.enteredSteps().push('');
   }
 }

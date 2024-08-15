@@ -1,3 +1,4 @@
+using System.Linq;
 using api.Data.Contexts;
 using api.Data.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,17 @@ public class RecipesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddRecipe(Recipe recipe) {
-        await _context.Recipes.AddAsync(recipe);
+    public async Task<IActionResult> AddRecipe(RecipeInput recipe) {
+        var idHolder = await _context.Recipes.OrderBy(x => x.Id).LastOrDefaultAsync();
+        var id = idHolder is null ? "1" : (int.Parse(idHolder.Id) + 1).ToString();
+
+        var _recipe = new Recipe{
+            Id = id,
+            Name = recipe.Name,
+            Ingredients = recipe.Ingredients,
+            Steps = recipe.Steps
+        };
+        await _context.Recipes.AddAsync(_recipe);
         await _context.SaveChangesAsync();
         return NoContent();
     }
