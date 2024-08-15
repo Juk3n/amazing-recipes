@@ -6,14 +6,14 @@
     <p>
         <label for="ingredients">Ingredients</label>
         @for (ingredient of enteredIngedients(); track $index) {
-            <input name="ingredient" [(ngModel)]="enteredIngedients()[$index]" />
+            <input name="ingredient{{$index}}" [(ngModel)]="enteredIngedients()[$index]" />
         }
         <button type="button" (click)="onAddIngredient()">Add Ingredient</button>
     </p>
     <p>
         <label for="steps">Steps</label>
         @for (step of enteredSteps(); track $index) {
-            <textarea name="step" [(ngModel)]="enteredSteps()[$index]"></textarea>
+            <textarea name="step{{$index}}" [(ngModel)]="enteredSteps()[$index]"></textarea>
         }
         <button type="button" (click)="onAddStep()">Add Step</button>
     </p>

@@ -1,1 +1,23 @@
-<p>edit-recipe works!</p>
+<form (ngSubmit)="onSubmit()">
+    <p>
+        <label for="name">Name</label>
+        <input type="text" name="name" [(ngModel)]="enteredName"/>
+    </p>
+    <p>
+        <label for="ingredients">Ingredients</label>
+        @for (ingredient of enteredIngedients(); track $index) {
+            <input name="ingredient{{$index}}" [(ngModel)]="enteredIngedients()[$index]" />
+        }
+        <button type="button" (click)="onAddIngredient()">Add Ingredient</button>
+    </p>
+    <p>
+        <label for="steps">Steps</label>
+        @for (step of enteredSteps(); track $index) {
+            <textarea name="step{{$index}}" [(ngModel)]="enteredSteps()[$index]"></textarea>
+        }
+        <button type="button" (click)="onAddStep()">Add Step</button>
+    </p>
+    <p>
+        <button type="submit">Save</button>
+    </p>
+</form>

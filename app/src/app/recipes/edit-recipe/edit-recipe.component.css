@@ -1,0 +1,14 @@
+button {
+    color: black;
+    width: 10rem;
+    height: 2rem;
+}
+
+p {
+    display: grid;
+}
+
+p textarea,
+p input {
+    color: black;
+}
