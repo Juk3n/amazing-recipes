@@ -1,3 +1,33 @@
-div {
+.details {
     margin-left: 3rem;
 }
+
+.namePanel {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+    transition-duration: 0.1s;
+    
+}
+
+button:hover {
+    background-color: rgba(148, 148, 148, 0.25);
+}
+
+button:active {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+}
+

@@ -10,4 +10,12 @@ import { Recipe } from '../recipe/recipe.model';
 })
 export class RecipeDetailsComponent {
   recipeData = input.required<Recipe>();
+
+  onEditRecipe() {
+
+  }
+
+  onDeleteRecipe() {
+    
+  }
 }

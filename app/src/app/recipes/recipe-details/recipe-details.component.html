@@ -1,5 +1,9 @@
-<div>
-    <h3>{{ recipeData().name }}</h3>
+<div class="details">
+    <div class="namePanel">
+        <h3>{{ recipeData().name }}</h3>
+        <button (click)="onEditRecipe()"><img src="edit.png" alt="edit recipe"/></button>
+        <button (click)="onDeleteRecipe()"><img src="delete.png" alt="delete recipe"/></button>
+    </div>
     <h4>Ingredients</h4>
     <ul>
         @for (ingredient of recipeData().ingredients; track $index) {
