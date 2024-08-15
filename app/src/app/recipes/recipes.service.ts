@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Recipe } from "./recipe/recipe.model";
+import { RecipeManageMode } from "./recipe-manage-bar/recipe-manage-bar.model";
 
 @Injectable({providedIn: "root"})
 export class RecipesService {

@@ -1,6 +1,7 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Recipe } from '../recipe/recipe.model';
 import { RecipesService } from '../recipes.service';
+import { RecipeManageMode } from '../recipe-manage-bar/recipe-manage-bar.model';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,9 +13,10 @@ import { RecipesService } from '../recipes.service';
 export class RecipeDetailsComponent {
   recipeData = input.required<Recipe>();
   recipesService = inject(RecipesService);
-
+  manageMode = output<RecipeManageMode>();
+  
   onEditRecipe() {
-
+    this.manageMode.emit(RecipeManageMode.Edit);
   }
 
   async onDeleteRecipe() {

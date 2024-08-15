@@ -3,11 +3,13 @@
     @if (manageMode == "View") {
         <app-recipe-list (selectedRecipe)="onRecipeSelect($event)"/>
         @if (currentRecipe !== undefined) {
-            <app-recipe-details [recipeData]="currentRecipe"/>
+            <app-recipe-details (manageMode)="onRecipeManageModeChange($event)" [recipeData]="currentRecipe"/>
         }
     }
-    @else {
+    @else if (manageMode == "Add") {
         <app-add-recipe />
     }
-
+    @else {
+        <app-edit-recipe />
+    }
 </div>

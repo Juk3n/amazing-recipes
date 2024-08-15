@@ -5,11 +5,12 @@ import { Recipe } from './recipe/recipe.model';
 import { RecipeManageBarComponent } from "./recipe-manage-bar/recipe-manage-bar.component";
 import { AddRecipeComponent } from "./add-recipe/add-recipe.component";
 import { RecipeManageMode } from './recipe-manage-bar/recipe-manage-bar.model';
+import { EditRecipeComponent } from "./edit-recipe/edit-recipe.component";
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [RecipeDetailsComponent, RecipeListComponent, RecipeManageBarComponent, AddRecipeComponent],
+  imports: [RecipeDetailsComponent, RecipeListComponent, RecipeManageBarComponent, AddRecipeComponent, EditRecipeComponent],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
