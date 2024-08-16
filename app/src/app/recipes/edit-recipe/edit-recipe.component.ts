@@ -1,6 +1,7 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Recipe } from '../recipe/recipe.model';
+import { RecipesService } from '../recipes.service';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -11,6 +12,7 @@ import { Recipe } from '../recipe/recipe.model';
 })
 export class EditRecipeComponent {
   editedRecipe = input.required<Recipe>();
+  recipesService = inject(RecipesService);
   enteredName = signal<string>('');
   enteredIngedients = signal<string[]>(['']);
   enteredSteps = signal<string[]>(['']);
@@ -22,7 +24,13 @@ export class EditRecipeComponent {
   }
 
   onSubmit() {
-
+    let recipe = {
+      id: this.editedRecipe().id,
+      name: this.enteredName(),
+      ingredients: this.enteredIngedients(),
+      steps: this.enteredSteps()
+    }
+    this.recipesService.updateRecipe(recipe);
   }
 
   onAddIngredient() {

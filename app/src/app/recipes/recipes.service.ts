@@ -33,4 +33,20 @@ export class RecipesService {
         });
         console.log(response);
     }
+
+    async updateRecipe(recipe: Recipe) {
+        const response = await fetch(this.api + "recipes/" + recipe.id, {
+            method: 'PUT',
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }),
+            body: JSON.stringify({
+                name: recipe.name,
+                ingredients: recipe.ingredients,
+                steps: recipe.steps                
+            })
+        });
+        console.log(response);
+    }
 }
