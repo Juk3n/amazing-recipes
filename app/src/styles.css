@@ -12,6 +12,4 @@
 body {
     margin: 0;
     background: radial-gradient(#1a201e, #0e1110);
-    min-height: 100vh;
-    width: 100%;
 }

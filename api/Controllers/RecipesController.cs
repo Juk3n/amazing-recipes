@@ -52,7 +52,7 @@ public class RecipesController : ControllerBase
         }
         recipeToEdit.Name = recipe.Name;
         recipeToEdit.Ingredients = recipe.Ingredients;
-        recipeToEdit.Steps = recipeToEdit.Steps;
+        recipeToEdit.Steps = recipe.Steps;
         _context.Update(recipeToEdit);
         await _context.SaveChangesAsync();
 
