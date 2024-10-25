@@ -1,6 +1,6 @@
 using System.Linq;
 using api.Data.Contexts;
-using api.Data.Models;
+using api.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

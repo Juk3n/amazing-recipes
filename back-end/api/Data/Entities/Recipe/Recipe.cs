@@ -1,4 +1,4 @@
-namespace api.Data.Models;
+namespace api.Data.Entities;
 
 public class Recipe {
     public required string Id { get; set; }
