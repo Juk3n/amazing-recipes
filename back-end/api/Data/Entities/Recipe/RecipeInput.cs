@@ -1,4 +1,4 @@
-namespace api.Data.Models;
+namespace api.Data.Entities;
 
 public class RecipeInput {
     public string? Name { get; set; }
